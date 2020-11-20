@@ -3,6 +3,8 @@ package com.company;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+
+
 public class Main {
     // kalkulator jak dla maupy
     public static void main(String[] args) {
@@ -12,7 +14,10 @@ public class Main {
 
 // Pobieranie pierwszej liczby od uzytkownika
 
+final NumberInput numberInput = new NumberInput(firstNumber, secondNumber);
         try {
+            int result = numberInput.readNumberInput();
+            System.out.println(result);
             System.out.println("Podaj pierwsza liczbe");
             firstNumber = readNumberInput();
             System.out.println("Podaj druga liczbe");
@@ -22,6 +27,8 @@ public class Main {
             System.out.println("Bledne dane!");
             return;
         }
+
+        final CalculateType calculateType = new CalculateType(calculation);
 
         System.out.println("Jakie dzialanie chcesz wykonac? [+] - dodawanie [-] - odejmowanie [*] - mnozenie [/] - dzielenie");
         calculation = readCalculateType();
@@ -36,21 +43,6 @@ public class Main {
         main(null);
     }
 
-    static int readNumberInput() throws InputMismatchException {
-        int number;
-        final Scanner scanner = new Scanner(System.in);
-        number = scanner.nextInt();
-        return number;
-
-
-    }
-
-    static char readCalculateType() {
-        char calculation;
-        final Scanner scanner = new Scanner(System.in);
-        calculation = scanner.next().charAt(0);
-        return calculation;
-    }
 
 
 }
